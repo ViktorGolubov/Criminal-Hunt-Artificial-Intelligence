@@ -4,7 +4,7 @@ import tech.bts.CriminalHuntArtificialIntelligenceCHAI.model.Suspect;
 
 public class SuspectAnalyser {
 
-    public boolean match (Suspect s1; Suspect s2) {
+    public boolean match (Suspect s1, Suspect s2) {
 
         boolean result = false;
         int totalResult = 0;
@@ -16,7 +16,7 @@ public class SuspectAnalyser {
         boolean equalEye = false;
 
 
-        if (s1.isMale() != s2.isMale) {
+        if (s1.isMale() != s2.isMale()) {
 
             return false;
 
@@ -29,7 +29,7 @@ public class SuspectAnalyser {
             totalResult++;
             equalAge = true;
 
-        } else if (s1.getHeight() - s2.getHeigh() <= 2) {
+        } else if (s1.getHeight() - s2.getHeight() <= 2) {
             totalResult++;
             equalHeight = true;
 
