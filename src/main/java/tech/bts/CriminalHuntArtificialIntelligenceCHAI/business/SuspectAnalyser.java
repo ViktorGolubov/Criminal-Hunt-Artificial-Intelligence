@@ -6,58 +6,49 @@ public class SuspectAnalyser {
 
     public boolean match (Suspect s1, Suspect s2) {
 
-        boolean result = false;
-        int totalResult = 0;
-        boolean equalName = false;
-        boolean equalAge = false;
-        boolean equalHeight = false;
-        boolean equalWeight = false;
-        boolean equalHair = false;
-        boolean equalEye = false;
-
-
-        if (s1.isMale() != s2.isMale()) {
-
+        if (s1.isMale() != s2.isMale()){
             return false;
-
-        } else if (s1.getName().toUpperCase().equals(s2.getName().toUpperCase())) {
-
-            totalResult++;
-            equalName = true;
-        } else if (s1.getAge() - s2.getAge() <= 1) {
-
-            totalResult++;
-            equalAge = true;
-
-        } else if (s1.getHeight() - s2.getHeight() <= 2) {
-            totalResult++;
-            equalHeight = true;
-
-        } else if (s1.getWeight() - s2.getWeight() <=5) {
-            totalResult++;
-            equalWeight = true;
-
-        } else if (s1.getHair().toUpperCase().equals(s2.getHair().toUpperCase())) {
-            totalResult++;
-            equalHair = true;
-        } else if (s1.getEye().toUpperCase().equals(s2.getEye().toUpperCase())) {
-            totalResult++;
-            equalEye = true;
         }
 
+        int points = 0;
 
-        if (totalResult >= 5) {
-           return result = true;
-
+        if (s1.getName().equalsIgnoreCase(s2.getName())) {
+            points++;
         }
 
-        if (equalName && equalAge && equalHeight && equalWeight) {
+        if (s1.getEyeColor().equals(s2.getEyeColor())) {
+            points++;
+        }
+
+        if (s1.getHairColor().equals(s2.getHairColor())) {
+            points++;
+        }
+
+        if (Math.abs(s1.getAge() - s2.getAge())<= 1) {
+            points++;
+        }
+
+        if (Math.abs(s1.getHeight() - s2.getHeight())<= 2) {
+            points++;
+        }
+        if (Math.abs(s1.getWeight() - s2.getWeight())<= 5) {
+            points++;
+        }
+
+        if (points >= 5) {
             return true;
+        }
 
+        if (points == 4
+                && s1.getName().equalsIgnoreCase(s2.getName())
+                && s1.getAge()== s2.getAge()
+                && s1.getWeight() == s2.getWeight()
+                && s1.getHeight() == s2.getHeight()) {
+            return true;
         } else {
             return false;
         }
-
-        return result;
     }
+
 }
+
